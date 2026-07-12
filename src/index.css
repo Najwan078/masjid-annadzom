@@ -1,0 +1,454 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CSS Custom Properties — Design Tokens (Premium & Elegant)
+   ============================================================ */
+:root {
+  --color-primary: #115e3b;          /* Hijau Takmir Premium */
+  --color-primary-light: #167a4d;    /* Hijau Muda Elegan */
+  --color-primary-dark: #0a3d25;     /* Hijau Tua Deep */
+  
+  --color-secondary: #c09633;        /* Emas Kubah Premium */
+  --color-secondary-light: #d6ad4c;  /* Emas Terang */
+  --color-secondary-dark: #997420;   /* Emas Antik */
+  
+  --color-dark-bg: #070e19;          /* Navy Gelap */
+  
+  /* Light Mode Specific Variables */
+  --bg-app: #f5f7fa;
+  --bg-card: #ffffff;
+  --bg-table-header: #115e3b;
+  --color-text-main: #2d3748;
+  --color-text-muted: #718096;
+  --color-border-card: #e2e8f0;
+  --color-border-hover: rgba(17, 94, 59, 0.25);
+  --bg-table-tr-hover: #f7fafc;
+  --bg-quran-ayat-hover: rgba(17, 94, 59, 0.03);
+  --bg-summary-header: #f8fafc;
+  
+  --font-primary: 'Inter', sans-serif;
+  --font-arabic: 'Amiri', serif;
+}
+
+.dark {
+  /* Dark Mode Specific Variables Override */
+  --bg-app: #080f1e;                 /* Deep Navy */
+  --bg-card: #0e1c31;                /* Medium Navy Card */
+  --bg-table-header: #0a3d25;        /* Darker green */
+  --color-text-main: #f1f5f9;        /* Light Gray */
+  --color-text-muted: #94a3b8;       /* Muted Slate Gray */
+  --color-border-card: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(192, 150, 51, 0.4);
+  --bg-table-tr-hover: rgba(255, 255, 255, 0.02);
+  --bg-quran-ayat-hover: rgba(192, 150, 51, 0.05);
+  --bg-summary-header: #0a1424;
+}
+
+/* ============================================================
+   Global Base Styles
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-app);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   Custom Scrollbar
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
+
+/* ============================================================
+   Typography & Arabic Text
+   ============================================================ */
+.font-arabic {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  line-height: 2.2;
+  font-size: 1.75rem;
+}
+
+/* ============================================================
+   Keyframes & Dynamic Animations (Premium Wow Factors)
+   ============================================================ */
+
+/* Slide-in Up dengan Fade dan Skala */
+@keyframes fadeInUpScale {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Denyut Cahaya Emas Aktif */
+@keyframes pulseGlowGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(192, 150, 51, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px 6px rgba(192, 150, 51, 0.15);
+  }
+}
+
+/* Denyut Cahaya Hijau Sholat Aktif */
+@keyframes pulseGlowGreen {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgba(17, 94, 59, 0.3), 0 0 0 0 rgba(22, 122, 77, 0.4);
+  }
+  50% {
+    box-shadow: 0 15px 30px -5px rgba(17, 94, 59, 0.45), 0 0 12px 6px rgba(22, 122, 77, 0.15);
+  }
+}
+
+/* Kilauan Efek Shimmer */
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Perputaran Dekorasi Background Sangat Lambat */
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Fade-in Sederhana */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   Helper Animation Classes
+   ============================================================ */
+.animate-fade-in-up {
+  animation: fadeInUpScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+
+/* Slow-spinning Islamic Geometric Shape behind Hero */
+.geo-decoration {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(192, 150, 51, 0.05) 0%, transparent 70%);
+  border: 1px dashed rgba(192, 150, 51, 0.08);
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: slowRotate 40s linear infinite;
+  pointer-events: none;
+}
+
+/* Shimmer Button Effect */
+.btn-shimmer {
+  background-size: 200% auto;
+  background-image: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-primary) 100%);
+  transition: all 0.3s ease;
+}
+.btn-shimmer:hover {
+  animation: shimmerSweep 1.5s linear infinite;
+  box-shadow: 0 8px 20px rgba(17, 94, 59, 0.3);
+}
+
+/* ============================================================
+   Modern Hero Section
+   ============================================================ */
+.hero-section {
+  position: relative;
+  min-height: 92vh;
+  background-color: var(--color-dark-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/mosque-bg.jpg') center center / cover no-repeat;
+  opacity: 0.32;
+  z-index: 0;
+  transform: scale(1.02);
+  transition: transform 10s ease-out;
+}
+.hero-section:hover::before {
+  transform: scale(1);
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 14, 25, 0.82) 0%,
+    rgba(17, 94, 59, 0.48) 50%,
+    rgba(7, 14, 25, 0.96) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   Premium Cards & Floating Hovers
+   ============================================================ */
+.premium-card {
+  background: var(--bg-card);
+  border: 1px solid var(--color-border-card);
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  border-color: var(--color-border-hover);
+}
+
+/* Glassmorphism for Overlay Badges */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+}
+
+/* ============================================================
+   Sticky Navbar with Micro-interactions
+   ============================================================ */
+.navbar-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(7, 14, 25, 0.92);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-link {
+  position: relative;
+  color: #cbd5e0;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--color-secondary);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 75%;
+}
+
+.nav-link.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Prayer Cards (Premium Dynamic)
+   ============================================================ */
+.prayer-card-clean {
+  background: var(--bg-card);
+  border: 1px solid var(--color-border-card);
+  border-radius: 20px;
+  padding: 28px 20px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.prayer-card-clean:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.prayer-card-clean.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-color: transparent;
+  color: #ffffff !important;
+  animation: pulseGlowGreen 3s infinite;
+}
+
+/* ============================================================
+   Table Styles (Modern & Professional)
+   ============================================================ */
+.table-premium {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-card);
+}
+
+.table-premium th {
+  background-color: var(--bg-table-header);
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 16px 20px;
+}
+
+.table-premium td {
+  padding: 18px 20px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--color-border-card);
+  color: var(--color-text-main);
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.table-premium tr:last-child td {
+  border-bottom: none;
+}
+
+.table-premium tr:hover td {
+  background-color: var(--bg-table-tr-hover);
+}
+
+/* ============================================================
+   Custom Badges
+   ============================================================ */
+.badge-premium {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-premium-today {
+  background-color: rgba(192, 150, 51, 0.12);
+  color: var(--color-secondary-dark);
+  border: 1px solid rgba(192, 150, 51, 0.25);
+  animation: pulseGlowGold 2s infinite;
+}
+
+.badge-premium-upcoming {
+  background-color: rgba(17, 94, 59, 0.08);
+  color: var(--color-primary);
+  border: 1px solid rgba(17, 94, 59, 0.18);
+}
+
+.badge-premium-completed {
+  background-color: var(--color-border-card);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-card);
+}
+
+/* ============================================================
+   Section Patterns
+   ============================================================ */
+.section-pattern {
+  background-color: var(--bg-app);
+  background-image: radial-gradient(circle at 1px 1px, var(--color-border-card) 1.2px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* ============================================================
+   Quran Reader
+   ============================================================ */
+.quran-ayat {
+  border-bottom: 1px solid var(--color-border-card);
+  transition: all 0.3s ease;
+}
+
+.quran-ayat:hover {
+  background-color: var(--bg-quran-ayat-hover);
+  transform: translateX(4px);
+}
+
+.ayat-number {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(17, 94, 59, 0.2);
+}
+
+/* ============================================================
+   Missing Gradient Components (Wow Accents)
+   ============================================================ */
+.gradient-green {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)) !important;
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-light)) !important;
+}
