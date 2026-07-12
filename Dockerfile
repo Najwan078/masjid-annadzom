@@ -1,22 +1,23 @@
-# Build stage
-FROM node:20-alpine AS build
+# Gunakan base image Python resmi yang ringan
+FROM python:3.10-slim
 
-WORKDIR /app
+# Set working directory di dalam container
+WORKDIR /code
 
-COPY package*.json ./
-RUN npm install
+# Salin file requirements.txt ke dalam container
+COPY ./backend/requirements.txt /code/requirements.txt
 
-COPY . .
-RUN npm run build
+# Install dependencies Python
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-# Production stage using Nginx
-FROM nginx:stable-alpine
+# Salin seluruh kode backend ke dalam folder /code/app
+COPY ./backend/app /code/app
 
-COPY --from=build /app/dist /usr/share/nginx/html
+# Buat folder data untuk database SQLite
+RUN mkdir -p /code/data
 
-# Copy custom nginx configuration for routing fallback
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Set port default untuk Hugging Face Spaces (Port 7860)
+ENV PORT=7860
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Jalankan server uvicorn saat container dimulai
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
