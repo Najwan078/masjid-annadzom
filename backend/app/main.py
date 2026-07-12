@@ -52,15 +52,13 @@ app.include_router(al_quran.router)
 
 
 # ─────────────────────────────────────────────────────
-# Startup Event — Seed database
+# Seed database (dijalankan langsung di global scope demi serverless Vercel)
 # ─────────────────────────────────────────────────────
-@app.on_event("startup")
-async def startup_event():
-    db = SessionLocal()
-    try:
-        seed_database(db)
-    finally:
-        db.close()
+db = SessionLocal()
+try:
+    seed_database(db)
+finally:
+    db.close()
 
 
 # ─────────────────────────────────────────────────────
