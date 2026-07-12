@@ -1,3 +1,8 @@
+import os
+import sys
+# Tambahkan folder parent (backend) ke sys.path agar import 'app.*' dapat ditemukan di Vercel
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
