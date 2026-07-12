@@ -116,20 +116,20 @@ const stats = [
 const StatsSection: React.FC = () => (
   <section className="py-12 px-4 -mt-16 relative z-10">
     <ScrollReveal>
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((s, i) => (
           <div
             key={i}
-            className="premium-card p-6 text-center rounded-2xl shadow-xl"
+            className="premium-card p-4 sm:p-6 text-center rounded-2xl shadow-xl"
           >
             <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
               style={{ background: `${s.color}15` }}
             >
-              <s.icon className="w-6 h-6" style={{ color: s.color }} />
+              <s.icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: s.color }} />
             </div>
-            <p className="text-3xl font-black mb-1" style={{ color: 'var(--color-text-main)' }}>{s.value}</p>
-            <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>{s.label}</p>
+            <p className="text-2xl sm:text-3xl font-black mb-1" style={{ color: 'var(--color-text-main)' }}>{s.value}</p>
+            <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider leading-tight" style={{ color: 'var(--color-text-muted)' }}>{s.label}</p>
           </div>
         ))}
       </div>
@@ -235,11 +235,13 @@ const PrayerWidget: React.FC = () => {
           <div className="text-center text-red-500 text-sm py-4">Gagal memuat jadwal: {error}</div>
         ) : (
           <ScrollReveal>
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
               {list.map((sholat, i) => (
                 <div
                   key={i}
-                  className={`prayer-card-clean text-center ${sholat.is_active ? 'active' : ''}`}
+                  className={`prayer-card-clean text-center ${sholat.is_active ? 'active' : ''} ${
+                    i === 4 ? 'col-span-2 sm:col-span-1' : ''
+                  }`}
                 >
                   <div className="flex justify-center mb-3 text-green-700 dark:text-yellow-400" style={{ color: sholat.is_active ? '#ffffff' : undefined }}>
                     {getPrayerIcon(sholat.nama, "w-8 h-8")}

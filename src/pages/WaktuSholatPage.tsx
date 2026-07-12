@@ -77,7 +77,7 @@ const WaktuSholatPage: React.FC = () => {
             <p className="text-sm font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--color-text-muted)' }}>
               {currentTime.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
-            <p className="text-6xl md:text-7xl font-black tracking-tight mb-2" style={{ fontFeatureSettings: '"tnum"', color: 'var(--color-text-main)' }}>
+            <p className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-2" style={{ fontFeatureSettings: '"tnum"', color: 'var(--color-text-main)' }}>
               {formatTime(currentTime)}
             </p>
             {nextPrayer && (
@@ -111,12 +111,14 @@ const WaktuSholatPage: React.FC = () => {
         {/* Prayer Cards Grid (Modern Theme) */}
         {!isLoading && list.length > 0 && (
           <ScrollReveal delay={100}>
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 mb-8">
               {list.map((sholat, i) => (
                 <div
                   key={i}
                   id={`prayer-${sholat.nama.toLowerCase()}`}
-                  className={`prayer-card-clean text-center ${sholat.is_active ? 'active scale-105' : ''}`}
+                  className={`prayer-card-clean text-center ${sholat.is_active ? 'active scale-105' : ''} ${
+                    i === 4 ? 'col-span-2 sm:col-span-1' : ''
+                  }`}
                 >
                   <div className="flex justify-center mb-4 text-green-700 dark:text-yellow-400" style={{ color: sholat.is_active ? '#ffffff' : undefined }}>
                     {getPrayerIcon(sholat.nama, "w-10 h-10")}

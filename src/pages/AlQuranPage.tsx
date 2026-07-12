@@ -121,7 +121,7 @@ const AlQuranPage: React.FC = () => {
         {!showSidebar && currentSurah && <span className="text-sm font-bold" style={{ color: 'var(--color-text-main)' }}>{currentSurah.nama_latin}</span>}
       </div>
 
-      <div className="max-w-7xl mx-auto flex min-h-screen">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-screen">
         {/* Sidebar */}
         <aside className={`${showSidebar ? 'flex' : 'hidden'} lg:flex flex-col w-full lg:w-80 xl:w-96 border-r flex-shrink-0`}
           style={{ height: 'calc(100vh - 128px)', position: 'sticky', top: '80px', zIndex: 10, backgroundColor: 'var(--bg-card)', borderColor: 'var(--color-border-card)' }}>
