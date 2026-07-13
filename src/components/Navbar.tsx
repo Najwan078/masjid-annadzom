@@ -34,7 +34,6 @@ const Navbar: React.FC = () => {
     { label: 'Hari Raya', path: '/hari-raya' },
     { label: 'Waktu Sholat', path: '/waktu-sholat' },
     { label: 'Baca Al-Qur\'an', path: '/al-quran' },
-    { label: 'Desain Figma', path: '/figma' },
     { label: 'Tentang Kami', path: '/about' },
   ];
 

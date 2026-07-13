@@ -14,7 +14,6 @@ import JadwalHariRayaPage from './pages/JadwalHariRayaPage';
 import WaktuSholatPage from './pages/WaktuSholatPage';
 import AlQuranPage from './pages/AlQuranPage';
 import AboutPage from './pages/AboutPage';
-import FigmaPage from './pages/FigmaPage';
 
 // ────────────────────────────────────────────────
 // Protected Route Guard
@@ -52,7 +51,6 @@ const AppRoutes: React.FC = () => (
     <Route path="/waktu-sholat" element={<AppLayout><WaktuSholatPage /></AppLayout>} />
     <Route path="/al-quran" element={<AppLayout><AlQuranPage /></AppLayout>} />
     <Route path="/about" element={<AppLayout><AboutPage /></AppLayout>} />
-    <Route path="/figma" element={<AppLayout><FigmaPage /></AppLayout>} />
 
     {/* Fallback */}
     <Route path="*" element={<Navigate to="/" replace />} />
